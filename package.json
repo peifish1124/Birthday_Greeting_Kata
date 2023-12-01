@@ -1,0 +1,32 @@
+{
+  "name": "birthday_greeting_kata",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "dev": "nodemon ./src/index.ts",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.1",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.0",
+    "nodemon": "^3.0.1",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
