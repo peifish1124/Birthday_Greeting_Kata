@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - birthday_greeting_bridge
+
+  birthday_greeting_kata:
+    build:
+      context: .
+    container_name: birthday_greeting_kata
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - birthday_greeting_bridge
+  
+networks:
+  birthday_greeting_bridge:
+volumes:
+  mysql-data:
+    driver: local
