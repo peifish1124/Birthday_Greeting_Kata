@@ -6,10 +6,8 @@ import MockMessageHandler from "../Interfaces/MessageHandlers/MockMessageHandler
 
 const router = Router();
 
-router.get("/version-1/message", (req: Request, res: Response) => {
-    const mockMemberHandler = new MockMemberHandler();
-    const mockMessageHandler = new MockMessageHandler();
-    const messageController = new MessageController(mockMemberHandler, mockMessageHandler);
+router.get("/version-0/message", (req: Request, res: Response) => {
+    const messageController = new MessageController(new MockMemberHandler(), new MockMessageHandler());
     messageController.getMessages(req, res);
 });
 

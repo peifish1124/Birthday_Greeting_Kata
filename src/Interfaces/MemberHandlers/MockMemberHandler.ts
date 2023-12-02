@@ -3,12 +3,14 @@ import { LineMember, Member } from "../../Models/Member.js";
 import IMemberHandler from "./IMemberHandler.js";
 
 class MockMemberHandler implements IMemberHandler {
-    getFilteredMembers(month: number | undefined, day: number | undefined, gender: string | undefined, age: number | undefined): Member[] {
-        let filteredMembers = this.generateMembers();
-        if (month) {
-            filteredMembers = filteredMembers.filter((member) => member.birthday.getMonth() == month);
-        }
-        return filteredMembers;
+    getFilteredMembers(month: number | undefined, day: number | undefined, gender: string | undefined, age: number | undefined): Promise<Member[]> {
+        return new Promise((resolve, reject) => {
+            let filteredMembers = this.generateMembers();
+            if (month) {
+                filteredMembers = filteredMembers.filter((member) => member.birthday.getMonth() === month);
+            }
+            resolve(filteredMembers);
+        });
     }
 
     generateMembers(): Member[] {
