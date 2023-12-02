@@ -3,3 +3,7 @@ node_modules/
 
 # compiled files
 dist/
+
+# DS_Store
+.DS_Store
+src/.DS_Store
