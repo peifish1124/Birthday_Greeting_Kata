@@ -3,7 +3,7 @@ import { BirthdayMessage, Message } from "../../Models/Message.js";
 
 import IMessageHandler from "./IMessageHandler.js";
 
-class MockMessageHandler implements IMessageHandler {
+class MessageHandlerVersion1 implements IMessageHandler {
     generateMessage(member: Member): Message {
         const title = "Subject: Happy birthday!";
         const content = `Happy birthday, dear ${member.firstName}!`;
@@ -11,4 +11,4 @@ class MockMessageHandler implements IMessageHandler {
     }
 }
 
-export default MockMessageHandler;
+export default MessageHandlerVersion1;
