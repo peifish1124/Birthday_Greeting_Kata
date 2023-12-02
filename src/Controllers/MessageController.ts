@@ -24,9 +24,11 @@ class MessageController {
         const messages: Message[] = selectedMembers.map((member) => this._messageHandler.generateMessage(member));
 
         if (messages.length > 0) {
-            res.status(200).json(messages);
+            res.status(200);
+            res.json(messages);
         } else {
-            res.status(404).json(messages);
+            res.status(404);
+            res.json(messages);
         }
     }
 }
