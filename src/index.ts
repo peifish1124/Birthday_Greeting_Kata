@@ -1,8 +1,8 @@
+import dotenv from "dotenv";
 import express from "express";
 
 import MessageRoute from "./Routes/MessageRoute.js";
 
-import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();

@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import IMemberHandler from "../Interfaces/MemberHandlers/IMemberHandler.js";
-import IMessageHandler from "../Interfaces/MessageHandlers/IMessageHandler.js";
 import { Member } from "../Models/Member.js";
 import { Message } from "../Models/Message.js";
+import IMemberHandler from "../Services/MemberHandlers/IMemberHandler.js";
+import IMessageHandler from "../Services/MessageHandlers/IMessageHandler.js";
 
 class MessageController {
     private readonly _memberHandler: IMemberHandler;

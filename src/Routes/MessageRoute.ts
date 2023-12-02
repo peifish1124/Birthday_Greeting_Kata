@@ -1,10 +1,10 @@
 import { Request, Response, Router } from "express";
 
 import MessageController from "../Controllers/MessageController.js";
-import MockMemberHandler from "../Interfaces/MemberHandlers/MockMemberHandler.js";
-import MessageHandlerVersion1 from "../Interfaces/MessageHandlers/MessageHandlerVersion1.js";
+import MockMemberHandler from "../Services/MemberHandlers/MockMemberHandler.js";
+import MysqlMemberHandler from "../Services/MemberHandlers/MysqlMemberHandler.js";
+import MessageHandlerVersion1 from "../Services/MessageHandlers/MessageHandlerVersion1.js";
 
-import MysqlMemberHandler from "../Interfaces/MemberHandlers/MysqlMemberHandler.js";
 
 const router = Router();
 
