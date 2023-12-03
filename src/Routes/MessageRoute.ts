@@ -9,13 +9,13 @@ import MessageHandlerVersion1 from "../Services/MessageHandlers/MessageHandlerVe
 const router = Router();
 
 // for testing without database
-router.get("/version-0/messages", (req: Request, res: Response) => {
+router.get("/v0/messages", (req: Request, res: Response) => {
     const messageController = new MessageController(new MockMemberHandler(), new MessageHandlerVersion1());
     messageController.getMessages(req, res);
 });
 
-// GET: /api/version-1/messages?month=8&day=8
-router.get("/version-1/messages", (req: Request, res: Response) => {
+// GET: /api/v1/messages?month=8&day=8
+router.get("/v1/messages", (req: Request, res: Response) => {
     const messageController = new MessageController(new MysqlMemberHandler(), new MessageHandlerVersion1());
     messageController.getMessages(req, res);
 });
