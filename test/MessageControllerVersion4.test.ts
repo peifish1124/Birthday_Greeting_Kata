@@ -1,4 +1,7 @@
 import MessageController from "../src/Controllers/MessageController.js";
+import { Message } from "../src/Models/Message.js";
+import MysqlMemberHandler from "../src/Services/MemberHandlers/MysqlMemberHandler.js";
+import MessageHandlerVersion4 from "../src/Services/MessageHandlers/MessageHandlerVersion4.js";
 import { Request, Response } from "express";
 
 describe("MessageController Tests Version4", () => {
@@ -19,13 +22,11 @@ describe("MessageController Tests Version4", () => {
             };
           }
         
-        const memberHandlerMock = {
-          getFilteredMembers: jest.fn().mockResolvedValue(mockMembers),
-        };
+        const memberHandlerMock = new MysqlMemberHandler() as jest.Mocked<MysqlMemberHandler>;
+        jest.spyOn(memberHandlerMock, 'getFilteredMembers').mockResolvedValue(mockMembers);
 
-        const messageHandlerMock = {
-          generateMessage: jest.fn().mockImplementation((member) => generateMockMessage(member)),
-        };
+        const messageHandlerMock = new MessageHandlerVersion4() as jest.Mocked<MessageHandlerVersion4>;
+        jest.spyOn(messageHandlerMock, 'generateMessage').mockImplementation((member) => generateMockMessage(member));
     
         const messageController = new MessageController(memberHandlerMock, messageHandlerMock);
 
@@ -42,13 +43,11 @@ describe("MessageController Tests Version4", () => {
         const req: Request = { query: { month: 1, day: 15 } } as unknown as Request;
         const res: Response = { status: jest.fn(), json: jest.fn() } as unknown as Response;
     
-        const memberHandlerMock = {
-          getFilteredMembers: jest.fn().mockResolvedValue([]),
-        };
+        const memberHandlerMock = new MysqlMemberHandler() as jest.Mocked<MysqlMemberHandler>;
+        jest.spyOn(memberHandlerMock, 'getFilteredMembers').mockResolvedValue([]);
 
-        const messageHandlerMock = {
-            generateMessage: jest.fn().mockReturnValue([]),
-        };
+        const messageHandlerMock = new MessageHandlerVersion4() as jest.Mocked<MessageHandlerVersion4>;
+        jest.spyOn(messageHandlerMock, 'generateMessage').mockReturnValue({} as Message);
     
         const messageController = new MessageController(memberHandlerMock, messageHandlerMock);
 
