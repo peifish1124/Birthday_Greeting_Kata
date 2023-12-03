@@ -5,6 +5,7 @@ import MockMemberHandler from "../Services/MemberHandlers/MockMemberHandler.js";
 import MysqlMemberHandler from "../Services/MemberHandlers/MysqlMemberHandler.js";
 import MessageHandlerVersion1 from "../Services/MessageHandlers/MessageHandlerVersion1.js";
 import MessageHandlerVersion2 from "../Services/MessageHandlers/MessageHandlerVersion2.js";
+import MessageHandlerVersion3 from "../Services/MessageHandlers/MessageHandlerVersion3.js";
 
 const router = Router();
 
@@ -23,6 +24,12 @@ router.get("/v1/messages", (req: Request, res: Response) => {
 // GET: /api/v2/messages?month=8&day=8
 router.get("/v2/messages", (req: Request, res: Response) => {
     const messageController = new MessageController(new MysqlMemberHandler(), new MessageHandlerVersion2());
+    messageController.getMessages(req, res);
+});
+
+// GET: /api/v3/messages?month=12&day=22
+router.get("/v3/messages", (req: Request, res: Response) => {
+    const messageController = new MessageController(new MysqlMemberHandler(), new MessageHandlerVersion3());
     messageController.getMessages(req, res);
 });
 
