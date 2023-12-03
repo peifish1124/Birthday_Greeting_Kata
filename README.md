@@ -11,3 +11,6 @@
   ```
   pnpm i
   ```
+
+## Branch relation
+Main branch is up to date with commits from version-1 through version-4. However, version-5 and version-6 are different database methods that haven't been merged into main yet (maintained in version-5 & version-6).
