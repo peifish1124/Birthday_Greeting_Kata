@@ -8,7 +8,7 @@ class MongodbMemberHandler implements IMemberHandler {
     private db: Db;
 
     constructor() {
-      const uri = process.env.MONGO_URL || '';
+      const uri = process.env.MONGO_URL || 'mongodb+srv://<username>:<password>@cluster0.example.com/dbName';
       const dbName = process.env.MONGO_DB_NAME || '';
 
       this.client = new MongoClient(uri);
