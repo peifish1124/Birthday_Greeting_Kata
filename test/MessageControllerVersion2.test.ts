@@ -1,7 +1,7 @@
 import MessageController from "../src/Controllers/MessageController.js";
 import { Message } from "../src/Models/Message.js";
 import MysqlMemberHandler from "../src/Services/MemberHandlers/MysqlMemberHandler.js";
-import MessageHandlerVersion1 from "../src/Services/MessageHandlers/MessageHandlerVersion1.js";
+import MessageHandlerVersion2 from "../src/Services/MessageHandlers/MessageHandlerVersion2.js";
 import { Request, Response } from "express";
 
 describe("MessageController Tests Version2", () => {
@@ -33,7 +33,7 @@ describe("MessageController Tests Version2", () => {
         const memberHandlerMock = new MysqlMemberHandler() as jest.Mocked<MysqlMemberHandler>;
         jest.spyOn(memberHandlerMock, 'getFilteredMembers').mockResolvedValue(mockMembers);
 
-        const messageHandlerMock = new MessageHandlerVersion1() as jest.Mocked<MessageHandlerVersion1>;
+        const messageHandlerMock = new MessageHandlerVersion2() as jest.Mocked<MessageHandlerVersion2>;
         jest.spyOn(messageHandlerMock, 'generateMessage').mockImplementation((member) => generateMockMessage(member));
     
         const messageController = new MessageController(memberHandlerMock, messageHandlerMock);
@@ -54,7 +54,7 @@ describe("MessageController Tests Version2", () => {
         const memberHandlerMock = new MysqlMemberHandler() as jest.Mocked<MysqlMemberHandler>;
         jest.spyOn(memberHandlerMock, 'getFilteredMembers').mockResolvedValue([]);
 
-        const messageHandlerMock = new MessageHandlerVersion1() as jest.Mocked<MessageHandlerVersion1>;
+        const messageHandlerMock = new MessageHandlerVersion2() as jest.Mocked<MessageHandlerVersion2>;
         jest.spyOn(messageHandlerMock, 'generateMessage').mockReturnValue({} as Message);
     
         const messageController = new MessageController(memberHandlerMock, messageHandlerMock);
