@@ -1,7 +1,7 @@
 import MessageController from "../src/Controllers/MessageController.js";
 import { Request, Response } from "express";
 
-describe("MessageController Tests Version1", () => {
+describe("MessageController Tests Version2", () => {
     it('should return 200 and correct array if selectedMembers is not empty', async () => {
         // arrange
         const req: Request = { query: { month: 8, day: 8 } } as unknown as Request;
