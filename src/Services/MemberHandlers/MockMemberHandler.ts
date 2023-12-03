@@ -3,7 +3,7 @@ import { LineMember, Member } from "../../Models/Member.js";
 import IMemberHandler from "./IMemberHandler.js";
 
 class MockMemberHandler implements IMemberHandler {
-    getFilteredMembers(month: number | undefined, day: number | undefined, gender: string | undefined, age: number | undefined): Promise<Member[]> {
+    getFilteredMembers(month: number | undefined, day: number | undefined): Promise<Member[]> {
         return new Promise((resolve, reject) => {
             let filteredMembers = this.generateMembers();
             if (month) {

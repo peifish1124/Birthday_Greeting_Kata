@@ -17,10 +17,8 @@ class MessageController {
     public async getMessages(req: Request, res: Response): Promise<void> {
         const month: number | undefined = req.query.month ? Number(req.query.month) : undefined;
         const day: number | undefined = req.query.day ? Number(req.query.day) : undefined;
-        const gender: string | undefined = req.query.gender ? String(req.query.gender) : undefined;
-        const age: number | undefined = req.query.age ? Number(req.query.age) : undefined;
 
-        const selectedMembers: Member[] = await this._memberHandler.getFilteredMembers(month, day, gender, age);
+        const selectedMembers: Member[] = await this._memberHandler.getFilteredMembers(month, day);
         const messages: Message[] = selectedMembers.map((member) => this._messageHandler.generateMessage(member));
 
         if (messages.length > 0) {

@@ -17,7 +17,7 @@ class MysqlMemberHandler implements IMemberHandler {
         });
     }
 
-    getFilteredMembers(month: number | undefined, day: number | undefined, gender: string | undefined, age: number | undefined): Promise<Member[]> {
+    getFilteredMembers(month: number | undefined, day: number | undefined): Promise<Member[]> {
         const filteredMembers: Member[] = [];
         let query = "SELECT * FROM members WHERE 1";
         const queryParams: any[] = [];
