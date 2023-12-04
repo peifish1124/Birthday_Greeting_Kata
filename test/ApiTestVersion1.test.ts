@@ -1,6 +1,10 @@
 import request from "supertest";
 import app from '../src/app.js';
 
+// this is just a sample one, suppose I need to:
+// 1. use test database and add test data to it during testing
+// 2. use more testcases to confirm the correctness
+
 describe("API testing for version 1 - simple message", () => {
   test("should return 200 and correct data if selectedMembers is not empty", async () => {
       const response = await request(app)
