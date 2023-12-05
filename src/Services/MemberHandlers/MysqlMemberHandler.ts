@@ -19,17 +19,22 @@ class MysqlMemberHandler implements IMemberHandler {
 
     getFilteredMembers(month: number | undefined, day: number | undefined): Promise<Member[]> {
         const filteredMembers: Member[] = [];
-        let query = "SELECT * FROM members WHERE 1";
+
+        // if month or day != number, it would be undefined
+        const conditions: string[] = [];
         const queryParams: any[] = [];
 
         if (month) {
-            query += " AND MONTH(date_of_birth) = ? ";
+            conditions.push("MONTH(date_of_birth) = ?");
             queryParams.push(month);
         }
         if (day) {
-            query += " AND DAY(date_of_birth) = ? ";
+            conditions.push("DAY(date_of_birth) = ?");
             queryParams.push(day);
         }
+
+        const conditionsString = conditions.length > 0 ? "WHERE " + conditions.join(" AND ") : "";
+        const query = `SELECT * FROM members ${conditionsString}`;
 
         return new Promise((resolve, reject) => {
             this.connection.connect((err) => {
