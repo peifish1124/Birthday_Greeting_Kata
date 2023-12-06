@@ -1,0 +1,20 @@
+name: birthday_greeting_kata workflow
+
+on:
+  push:
+    branches: [version-1]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Build docker compose for test
+      run: |
+        echo "${{ secrets.ENV_FILE }}" > .env
+        docker-compose up -d
+    - name: Wait for containers to start
+      run: sleep 20
+    - name: Run test file
+      run: docker exec birthday_greeting_kata npm test -- --watch=false
