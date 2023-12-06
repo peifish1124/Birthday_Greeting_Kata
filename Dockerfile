@@ -1,16 +1,17 @@
 FROM node:20-alpine
 
-RUN mkdir /Birthday_Greeting_Kata
+ENV NODE_ENV production
+RUN npm install -g typescript pnpm
 
-COPY . /Birthday_Greeting_Kata
-
-WORKDIR /Birthday_Greeting_Kata
-
-RUN npm install -g typescript
-
-RUN npm install -g pnpm
+COPY package*.json ./
 RUN pnpm install
 
-RUN tsc -p tsconfig.build.json
+USER node
+COPY --chown=node:node . .
 
-CMD node ./dist/index.js
+USER root
+RUN tsc -p tsconfig.build.json
+USER node
+
+EXPOSE 3000
+ENTRYPOINT ["node", "./dist/index.js"] 
