@@ -14,6 +14,7 @@ jobs:
       run: |
         echo "${{ secrets.ENV_FILE }}" > .env
         docker-compose up -d
+        docker-compose exec birthday_greeting_kata pnpm install
     - name: Wait for containers to start
       run: sleep 20
     - name: Run test file
