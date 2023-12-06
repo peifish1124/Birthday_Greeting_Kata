@@ -104,6 +104,53 @@ export const generalTestCaseForVersion2: TestCase = {
   ]
 };
 
+export const generalTestCaseForVersion3: TestCase = {
+  testCases: [
+    {
+      request: { month: 4, day: 5 },
+      mockMemberData: [
+        { id: 3, firstName: 'Miki', lastName: 'Lai', gender: 'Female', birthday: new Date(1993, 4, 5), email: 'miki.lai@linecorp.com' }
+      ],
+      expectedOutput: [
+        {
+          title: 'Subject: Happy birthday!',
+          content: 'Happy birthday, dear Miki!',
+        },
+      ]
+    }, 
+    {
+      request: { month: 10, day: 10 },
+      mockMemberData: [
+        { id: 5, firstName: 'Peter', lastName: 'Wang', gender: 'Male', birthday: new Date(1950, 12, 22), email: 'peter.wang@linecorp.com' }
+      ],
+      expectedOutput: [
+        {
+          title: 'Subject: Happy birthday!',
+          content: 'Happy birthday, dear Peter!\n(A greeting picture here)\n',
+        },
+      ]
+    }, 
+    {
+      request: { month: 8, day: 8 },
+      mockMemberData: [
+        { id: 1, firstName: 'Robert', lastName: 'Yen', gender: 'Male', birthday: new Date(1985, 8, 8), email: 'robert.yen@linecorp.com' },
+        { id: 4, firstName: 'Sherry', lastName: 'Chen', gender: 'Female', birthday: new Date(1993, 8, 8), email: 'sherry.lai@linecorp.com' },
+      ],
+      expectedOutput: [
+        {
+          title: 'Subject: Happy birthday!',
+          content: 'Happy birthday, dear Robert!',
+        },
+        {
+          title: 'Subject: Happy birthday!',
+          content: 'Happy birthday, dear Sherry!',
+        },
+      ]
+    }
+
+  ]
+};
+
 export const notExistTestCase: TestCase = {
   testCases: [
     {
