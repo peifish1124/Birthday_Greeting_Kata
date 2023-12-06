@@ -15,7 +15,7 @@ export const generalTestCase: TestCase = {
     {
       request: { month: 4, day: 5 },
       mockMemberData: [
-        { id: 3, firstName: 'Miki', lastName: 'Lai', gender: 'FeMale', birthday: new Date(1993, 4, 5), email: 'miki.lai@linecorp.com' }
+        { id: 3, firstName: 'Miki', lastName: 'Lai', gender: 'Female', birthday: new Date(1993, 4, 5), email: 'miki.lai@linecorp.com' }
       ],
       expectedOutput: [
         {
@@ -50,6 +50,53 @@ export const generalTestCase: TestCase = {
         {
           title: 'Subject: Happy birthday!',
           content: 'Happy birthday, dear Sherry!',
+        },
+      ]
+    }
+
+  ]
+};
+
+export const generalTestCaseForVersion2: TestCase = {
+  testCases: [
+    {
+      request: { month: 4, day: 5 },
+      mockMemberData: [
+        { id: 3, firstName: 'Miki', lastName: 'Lai', gender: 'Female', birthday: new Date(1993, 4, 5), email: 'miki.lai@linecorp.com' }
+      ],
+      expectedOutput: [
+        {
+          title: 'Subject: Happy birthday!',
+          content: 'Happy birthday, dear Miki!\nWe offer special discount 50% off for the following items:\nCosmetic, LV Handbags',
+        },
+      ]
+    }, 
+    {
+      request: { month: 10, day: 10 },
+      mockMemberData: [
+        { id: 2, firstName: 'Cid', lastName: 'Change', gender: 'Male', birthday: new Date(1990, 10, 10), email: 'cid.change@linecorp.com' }
+      ],
+      expectedOutput: [
+        {
+          title: 'Subject: Happy birthday!',
+          content: 'Happy birthday, dear Cid!\nWe offer special discount 20% off for the following items:\nWhite Wine, iPhone X',
+        },
+      ]
+    }, 
+    {
+      request: { month: 8, day: 8 },
+      mockMemberData: [
+        { id: 1, firstName: 'Robert', lastName: 'Yen', gender: 'Male', birthday: new Date(1985, 8, 8), email: 'robert.yen@linecorp.com' },
+        { id: 4, firstName: 'Sherry', lastName: 'Chen', gender: 'Female', birthday: new Date(1993, 8, 8), email: 'sherry.lai@linecorp.com' },
+      ],
+      expectedOutput: [
+        {
+          title: 'Subject: Happy birthday!',
+          content: 'Happy birthday, dear Robert!\nWe offer special discount 20% off for the following items:\nWhite Wine, iPhone X',
+        },
+        {
+          title: 'Subject: Happy birthday!',
+          content: 'Happy birthday, dear Sherry!\nWe offer special discount 50% off for the following items:\nCosmetic, LV Handbags',
         },
       ]
     }
